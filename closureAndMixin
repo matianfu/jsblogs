@@ -1,9 +1,10 @@
+# Closure vs Object
 
-Hello
-
-```
-function (a, b) {
-  let x = a
-  let y = b
+```javascript
+function Something(a, b) {
+  this.x = a
+  this.y = b
 }
+
+var z = new Something(1, 2)
 ```
