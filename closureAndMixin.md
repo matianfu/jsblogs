@@ -55,9 +55,12 @@ ES6里提供了类似OO的Class语法，但只是一个语法糖，JS的继承�
 function createStore(filepath) {
   var stream = fs.createWriteStream(filepath)
   return {
-    save: function(object) {
+    save: function (object) {
       stream.write(JSON.stringify(object))
       stream.write('\n')
+    },
+    end: function() {
+      stream.end()
     }
   }
 }
@@ -72,7 +75,7 @@ function createDocumentPrototype(store) {
     store: store,
     save: function() {
       this.store.save(this) // or you want to save some props here
-    },
+    }
     // other prototype methods here
   }
 }
@@ -84,6 +87,27 @@ function createDocument(proto, title, author, text) {
   return Object.create(proto, { title, author, text })
 }
 ```
+
+以上代码示例展示了JavaScript面向对象的基础逻辑。Prototypal继承是一个共享资源的delegation，而不是结构性继承；结构性继承或者私有状态，应该使用闭包来完成；此其一；
+
+其二，在上面的代码中，构造原型时，直接使用`Object.assign`来把所有store的方法直接mixin到原型里也是可以的，优点是代码格式简洁，缺点是如果要mixin多个对象，可能函数名有冲突；分拆一个成员变量（store）是避免这种冲突的最简单做法，易维护，在`Object.assign`的时候直接修改名字也是可以的；
+
+其三，在C++里是有多重继承的，Java里去掉了；在JS里如果你使用这种闭包方式封装状态或者资源，重用的时候不会有成员变量名字的冲突，多重继承是可能而且实用的；
+
+在JS里，面向对象编程的全部重点都在构造对象上，在逻辑粒度很细的时候，mixin是主力做法，上面代码中利用闭包创建对象并进一步构造原型的做法，也可以用于构造对象的其他（函数）成员，逻辑是一样的，黑盒组合；
+
+虽然ES6提供了Class语法，但是它不是你想要的那种OO的Class，它不是编译时定义而且对性能毫无影响的，长长的原型链是性能的噩梦；
+
+1. 优选闭包方式实现共享逻辑单元；
+2. 使用组合或者mixin构造prototype对象，让这些方法在prototype上扁平化，而不是层层的Class继承；
+3. this binding和对象成员仅限于适用于每个对象私有和需要late binding的内部状态；这是JavaScript的Class和Constructor唯一适用的地方；
+
+这是JavaScript的OO之道。精心设计的逻辑单元和构造过程是代码易维护易书写易测试和易重用的保证。
+
+
+
+
+
 
 
 
