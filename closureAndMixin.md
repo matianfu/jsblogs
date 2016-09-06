@@ -1,4 +1,4 @@
-# Closure vs Object
+# Object or Closure
 
 这是一个Object
 
