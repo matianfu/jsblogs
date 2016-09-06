@@ -35,4 +35,10 @@ console.log(z.sum()) // output 3
 
 前者的写法，也是大家熟悉和喜欢的，类似OO的，使用了this binding，而后者使用了闭包变量；
 
-在JS引擎的实际实现上，这两者的性能区别不好一概而论优劣，仅从JS的语言定义上说，this binding是late binding，也是JS的招牌特性之一，
+在JS引擎的实际实现上，这两者的性能区别不好一概而论；仅从JS的语言定义上说，this binding是late binding，是JS的招牌特性之一；理论上late binding提供了灵活性但是损失性能。
+
+闭包变量，或者说lexical scope，是编译时可以解析的，创建时和函数的关系是固定的，类似early binding，理论上有更好的性能；实际上在JS里Function Scope是可以当作Object来用的，它才是真正OO的，不共享，编译时已经确定，而且私有。
+
+然后我们来看重用；
+
+
