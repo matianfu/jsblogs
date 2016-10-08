@@ -1,1 +1,14 @@
-Callback
+Callback是JavaScript的招牌特性；
+
+```
+function doSomething(arg1, arg2, ..., callback)
+```
+
+在Node里， 大多数callback function使用`(err, result)`作为返回形式， 这不是必须的， 但是推荐的和绝大多数设计遵循的， 一些Promise库依赖这样的定义。
+
+现在我们回到问题的本原， `doSomething`这个函数对象， 它做了什么？
+
+请注意我使用了函数对象这个词， 而不是简单的说函数， 因为对JavaScript语言来说， 函数本身也是对象。
+
+
+
