@@ -6,7 +6,7 @@ let arr = [0, 1, 2, 3]
 const find1 = (x, y) => {
   for (let i = 0; i < x.length; i++) {
     if (x[i] === y)
-    return i
+      return i
   }
   return null
 }
