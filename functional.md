@@ -1,9 +1,27 @@
+```js
+let arr = [0, 1, 2, 3]
 
-老看到函数式编程，具体指啥？
+// find the first value in array x that equals to y
+// return index, or null if not found
+const find1 = (x, y) => {
+  for (let i = 0; i < x.length; i++) {
+    if (x[i] === y)
+    return i
+  }
+  return null
+}
 
-关于计算的理论，是从军事上的密码学作为最初的应用起源的，大家耳熟能详的人物，是Alan Turing.
+console.log(find1(arr, 2)) 
+console.log(find1(arr, 5)) 
 
-但在计算科学领域，大家知道，从原点开始，就有三个理论框架来描述计算，turing machine, lamba calculus, 和recursive theory.
+// the functional programming version
+const find2 = (f => f(f))(f =>  
+  (next => (x, y, i = 0) =>  
+    (i >= x.length) ? null : (x[i] === y) ? i : 
+      next(x, y, i+1))((...args) =>  
+        (f(f))(...args)))
 
-他们是等价的；但turing machine在上一个世纪的计算史上的贡献最大，
+console.log(find2(arr, 2)) 
+console.log(find2(arr, 5))
+```
 
