@@ -1,7 +1,10 @@
 ```javascript
 // for human being
 const encodingIndex1 = (enc) => {
-  let index = ['en_US', 'zh_CN'].indexOf(enc)
+  let index = [
+    'en_US', 
+    'zh_CN'
+  ].indexOf(enc)
   return index === -1 ? 0 : index
 }
 
