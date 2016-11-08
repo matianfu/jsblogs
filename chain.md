@@ -18,8 +18,9 @@ const C = x => f => f ? C(f(x)) : x
 const encodingIndex2 = enc => C(enc)
   (x => ['en_US', 'zh_CN'].indexOf(x))
   (i => i === -1 ? 0 : i)
+  ()
 
-console.log(encodingIndex2('en_US')())
-console.log(encodingIndex2('zh_CN')())
-console.log(encodingIndex2('ja_JP')())
+console.log(encodingIndex2('en_US'))
+console.log(encodingIndex2('zh_CN'))
+console.log(encodingIndex2('ja_JP'))
 ```
