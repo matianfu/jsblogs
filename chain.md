@@ -1,3 +1,4 @@
+```javascript
 // for human being
 const encodingIndex1 = (enc) => {
   let index = ['en_US', 'zh_CN'].indexOf(enc)
@@ -18,3 +19,4 @@ const encodingIndex2 = enc => C(enc)
 console.log(encodingIndex2('en_US')())
 console.log(encodingIndex2('zh_CN')())
 console.log(encodingIndex2('ja_JP')())
+```
